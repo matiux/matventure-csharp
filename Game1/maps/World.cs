@@ -30,32 +30,25 @@ namespace Map
 
       public override void Draw(SpriteBatch spriteBatch)
       {
-         int espansioneDalCentro = 5;
-      
-         for (int tmpX = MapStartX - espansioneDalCentro; tmpX <= MapStartX + espansioneDalCentro; tmpX++)
+         for (int incrementoX = MapStartX - EspansioneDalCentroX; incrementoX <= MapStartX + EspansioneDalCentroY; incrementoX++)
          {
-            if (tmpX < 0 || tmpX >= MapWidth)
-            {
-               continue;
-            }
+            if (incrementoX < 0 || incrementoX >= MapWidth) { continue; }
 
-            int tileInTexture = MapGrid[MapWidth * MapStartY + tmpX] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
+            int tileInTexture = MapGrid[MapWidth * MapStartY + incrementoX] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
 
             int textureTileRow = (int)((float)tileInTexture / (float)TextureColumns);
             int textureTileColumn = tileInTexture % TextureColumns;
 
             Rectangle sourceRectangle = new Rectangle(TileWidth * textureTileColumn, TileHeight * textureTileRow, TileWidth, TileHeight);
 
-            int posX = (ScreenWidth / 2 - TileWidth / 2) + ((TileWidth / 2) * tmpX);
-            int posY = (ScreenHeight / 2 - TileHeight / 2) + ((TileHeight / 2) * tmpX);
+            int posX = (ScreenMezzoWidth - MezzoTileWidth) + (incrementoX - MapStartX)*(TileWidth /2);
+            int posY = (ScreenMezzoHeight - MezzoTileHeight) + (incrementoX - MapStartX)*(TileHeight /2);
 
             Rectangle destinationRectangle = new Rectangle(
                               posX,
                               posY,
                               TileWidth, TileHeight
                            );
-
-            Console.WriteLine(posX);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
          }

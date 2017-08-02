@@ -23,6 +23,10 @@ namespace Map
 
       protected int MapHeight { get; set; }
 
+      protected int ScreenMezzoWidth, ScreenMezzoHeight,
+                    MezzoTileWidth, MezzoTileHeight,
+                    EspansioneDalCentroX, EspansioneDalCentroY;
+
       protected int TextureColumns
       {
          get { return textureColumns; }
@@ -69,6 +73,18 @@ namespace Map
 
          TileWidth = texture.Width / TextureColumns;
          TileHeight = texture.Height / TextureRows;
+
+         // Calcoliamo quanto è lungo mezzo tile per il movimento e dove si trova il centro dello schermo sull'asse X
+         MezzoTileWidth = TileWidth / 2;
+         ScreenMezzoWidth = ScreenWidth / 2 - MezzoTileWidth;
+
+         // Calcoliamo quanto è alto mezzo tile per il movimento e dove si trova il centro dello schermo sull'asse Y
+         MezzoTileHeight = TileHeight / 2;
+         ScreenMezzoHeight = ScreenHeight / 2 - MezzoTileHeight;
+
+         // Per ora li settiamo fissi a 5 poi li calcoleremo meglio
+         EspansioneDalCentroX = 5;
+         EspansioneDalCentroY = 5;
       }
 
       public virtual void Update()
