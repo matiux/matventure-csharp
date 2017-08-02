@@ -30,31 +30,39 @@ namespace Map
 
       public override void Draw(SpriteBatch spriteBatch)
       {
-         for (int incrementoX = MapStartX - EspansioneDalCentroX; incrementoX <= MapStartX + EspansioneDalCentroY; incrementoX++)
+         for (int incrementoY = MapStartY - EspansioneDalCentroY; incrementoY <= MapStartY + EspansioneDalCentroY; incrementoY++)
          {
-            if (incrementoX < 0 || incrementoX >= MapWidth) { continue; }
+            if (incrementoY < 0 || incrementoY >= MapHeight) { continue; }
 
-            int tileInTexture = MapGrid[MapWidth * MapStartY + incrementoX] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
+            for (int incrementoX = MapStartX - EspansioneDalCentroX; incrementoX <= MapStartX + EspansioneDalCentroY; incrementoX++)
+            {
+               if (incrementoX < 0 || incrementoX >= MapWidth) { continue; }
 
-            int textureTileRow = (int)((float)tileInTexture / (float)TextureColumns);
-            int textureTileColumn = tileInTexture % TextureColumns;
+               int tileInTexture = MapGrid[MapWidth * incrementoY + incrementoX] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
 
-            Rectangle sourceRectangle = new Rectangle(TileWidth * textureTileColumn, TileHeight * textureTileRow, TileWidth, TileHeight);
+               int textureTileRow = (int)((float)tileInTexture / (float)TextureColumns);
+               int textureTileColumn = tileInTexture % TextureColumns;
 
-            int posX = (ScreenMezzoWidth - MezzoTileWidth) + (incrementoX - MapStartX)*(TileWidth /2);
-            int posY = (ScreenMezzoHeight - MezzoTileHeight) + (incrementoX - MapStartX)*(TileHeight /2);
+               Rectangle sourceRectangle = new Rectangle(TileWidth * textureTileColumn, TileHeight * textureTileRow, TileWidth, TileHeight);
 
-            Rectangle destinationRectangle = new Rectangle(
-                              posX,
-                              posY,
-                              TileWidth, TileHeight
-                           );
+               int posX = (ScreenMezzoWidth - MezzoTileWidth) + (incrementoX - MapStartX) * (TileWidth / 2);
+               int posY = (ScreenMezzoHeight - MezzoTileHeight) + (incrementoX - MapStartY) * (TileHeight / 2);
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+               Console.WriteLine(posX);
+               Console.WriteLine(posY);
+
+               Rectangle destinationRectangle = new Rectangle(
+                                 posX,
+                                 posY,
+                                 TileWidth, TileHeight
+                              );
+
+               spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            }
          }
 
 
-
+         
 
 
 
