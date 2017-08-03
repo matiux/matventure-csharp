@@ -30,40 +30,33 @@ namespace Map
 
       public override void Draw(SpriteBatch spriteBatch)
       {
-         for (int incrementoY = MapStartY - EspansioneDalCentroY; incrementoY <= MapStartY + EspansioneDalCentroY; incrementoY++)
+         for (int incrementoX = -EspansioneDalCentroX; incrementoX <= EspansioneDalCentroX; incrementoX++)
          {
-            if (incrementoY < 0 || incrementoY >= MapHeight) { continue; }
+            if ((MapStartX - incrementoX) == 0) { continue; }
 
-            for (int incrementoX = MapStartX - EspansioneDalCentroX; incrementoX <= MapStartX + EspansioneDalCentroY; incrementoX++)
-            {
-               if (incrementoX < 0 || incrementoX >= MapWidth) { continue; }
+            int tileInTexture = MapGrid[MapWidth * MapStartY + incrementoX] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
 
-               int tileInTexture = MapGrid[MapWidth * incrementoY + incrementoX] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
+            int textureTileRow = (int)((float)tileInTexture / (float)TextureColumns);
+            int textureTileColumn = tileInTexture % TextureColumns;
 
-               int textureTileRow = (int)((float)tileInTexture / (float)TextureColumns);
-               int textureTileColumn = tileInTexture % TextureColumns;
+            Rectangle sourceRectangle = new Rectangle(TileWidth * textureTileColumn, TileHeight * textureTileRow, TileWidth, TileHeight);
 
-               Rectangle sourceRectangle = new Rectangle(TileWidth * textureTileColumn, TileHeight * textureTileRow, TileWidth, TileHeight);
+            int posX = ScreenMezzoWidth + (incrementoX - MapStartX) * (TileWidth / 2);
+            int posY = ScreenMezzoHeight + (incrementoX - MapStartX) * (TileHeight / 2);
 
-               int posX = (ScreenMezzoWidth - MezzoTileWidth) + (incrementoX - MapStartX) * (TileWidth / 2);
-               int posY = (ScreenMezzoHeight - MezzoTileHeight) + (incrementoX - MapStartY) * (TileHeight / 2);
+            Console.WriteLine("IncX: " + incrementoX + " | posX: " + posX);
+            //Console.WriteLine("IncY: " + incrementoY + " | posY: " + posY);
 
-               Console.WriteLine(posX);
-               Console.WriteLine(posY);
+            Rectangle destinationRectangle = new Rectangle(
+                              posX,
+                              posY,
+                              TileWidth, TileHeight
+                           );
 
-               Rectangle destinationRectangle = new Rectangle(
-                                 posX,
-                                 posY,
-                                 TileWidth, TileHeight
-                              );
-
-               spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
-            }
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
          }
 
-
-         
-
+         Console.WriteLine("--------------------");
 
 
 
@@ -74,6 +67,38 @@ namespace Map
 
 
 
+         // for (int incrementoY = MapStartY - EspansioneDalCentroY; incrementoY <= MapStartY + EspansioneDalCentroY; incrementoY++)
+         // {
+         //    if (incrementoY < 0 || incrementoY >= MapHeight) { continue; }
+
+         //    for (int incrementoX = MapStartX - EspansioneDalCentroX; incrementoX <= MapStartX + EspansioneDalCentroY; incrementoX++)
+         //    {
+         //       if (incrementoX < 0 || incrementoX >= MapWidth) { continue; }
+
+         //       int tileInTexture = MapGrid[MapWidth * incrementoY + incrementoX] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
+
+         //       int textureTileRow = (int)((float)tileInTexture / (float)TextureColumns);
+         //       int textureTileColumn = tileInTexture % TextureColumns;
+
+         //       Rectangle sourceRectangle = new Rectangle(TileWidth * textureTileColumn, TileHeight * textureTileRow, TileWidth, TileHeight);
+
+         //       int posX = ScreenMezzoWidth + incrementoY * (incrementoX - MapStartX) * MezzoTileWidth;
+         //       int posY = ScreenMezzoHeight - incrementoY * (incrementoX - MapStartX) * MezzoTileHeight;
+
+         //       Console.WriteLine("IncX: " + incrementoX + " | posX: " + posX);
+         //       Console.WriteLine("IncY: " + incrementoY + " | posY: " + posY);
+
+         //       Rectangle destinationRectangle = new Rectangle(
+         //                         posX,
+         //                         posY,
+         //                         TileWidth, TileHeight
+         //                      );
+
+         //       spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+         //    }
+         // }
+
+         // Console.WriteLine("--------------------");
 
 
 
@@ -81,6 +106,18 @@ namespace Map
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+         // FEDE VERSION
          // for (int y = 0; y < mapHeight; y++)
          // {
          //    for (int x = 0; x < mapWidth; x++)
