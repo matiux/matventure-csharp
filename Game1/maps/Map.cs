@@ -83,8 +83,8 @@ namespace Map
          ScreenMezzoHeight = ScreenHeight / 2 - MezzoTileHeight;
 
          // Per ora li settiamo fissi a 5 poi li calcoleremo meglio
-         EspansioneDalCentroX = 5;
-         EspansioneDalCentroY = 5;
+         EspansioneDalCentroX = 2;
+         EspansioneDalCentroY = 2;
       }
 
       public virtual void Update()
