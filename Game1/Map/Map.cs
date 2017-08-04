@@ -1,9 +1,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Interface;
 
 namespace Map
 {
-   public abstract class Map
+   public abstract class Map : IGraph
    {
       protected int[] MapGrid { get; set; }
 
@@ -83,8 +84,8 @@ namespace Map
          ScreenMezzoHeight = ScreenHeight / 2 - MezzoTileHeight;
 
          // Per ora li settiamo fissi a 5 poi li calcoleremo meglio
-         EspansioneDalCentroX = 2;
-         EspansioneDalCentroY = 2;
+         EspansioneDalCentroX = 10;
+         EspansioneDalCentroY = 10;
       }
 
       public virtual void Update()

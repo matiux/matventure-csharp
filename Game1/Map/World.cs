@@ -32,11 +32,11 @@ namespace Map
       {
          for (int incrementoY = -EspansioneDalCentroY; incrementoY <= EspansioneDalCentroY; incrementoY++)
          {
-            if ((MapStartY+incrementoY) < 0) { continue; }
+            if ((MapStartY+incrementoY) < 0 || (MapStartY+incrementoY) > MapHeight) { continue; }
 
             for (int incrementoX = -EspansioneDalCentroX; incrementoX <= EspansioneDalCentroX; incrementoX++)
             {
-               if ((MapStartX+incrementoX) < 0) { continue; }
+               if ((MapStartX+incrementoX) < 0 || (MapStartX+incrementoX) > MapWidth) { continue; }
 
                int tileInTexture = MapGrid[MapWidth * (MapStartY+incrementoY) + (MapStartY+incrementoX)] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
 
