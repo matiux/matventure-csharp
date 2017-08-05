@@ -128,14 +128,16 @@ namespace Game1.Map
                var line = reader.ReadLine();
                var tileCodeLine = line?.Trim().Split(',');
 
-               if (String.IsNullOrEmpty(tileCodeLine?[tileCodeLine.Length - 1]))
-               {
-                  tileCodeLine = tileCodeLine.Reverse().Skip(1).Reverse().ToArray();
+               var temp = tileCodeLine.ToList();
+      
+               if (String.IsNullOrEmpty(temp?[temp.Count - 1]))
+               {                
+                  temp.RemoveAt(temp.Count - 1);
                }
 
-               columns = columns < tileCodeLine.Length ? tileCodeLine.Length : columns;
+               columns = columns < temp.Count ? temp.Count : columns;
 
-               MapGrid.AddRange(tileCodeLine.ToList());
+               MapGrid.AddRange(temp);
                rows++;
             }
 
