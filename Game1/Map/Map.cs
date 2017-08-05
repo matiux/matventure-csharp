@@ -1,8 +1,7 @@
+using Game1.Interface;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Interface;
 
-namespace Map
+namespace Game1.Map
 {
    public abstract class Map : IGraph
    {
@@ -11,7 +10,7 @@ namespace Map
       protected int ScreenWidth { get; set; }
       protected int ScreenHeight { get; set; }
 
-      private int textureColumns, textureRows;
+      private int _textureColumns, _textureRows;
 
       protected Texture2D Texture { get; private set; }
 
@@ -30,25 +29,25 @@ namespace Map
 
       protected int TextureColumns
       {
-         get { return textureColumns; }
+         get => _textureColumns;
          private set
          {
             if (value < 0)
                value = 0;
 
-            textureColumns = value;
+            _textureColumns = value;
          }
       }
 
       protected int TextureRows
       {
-         get { return textureRows; }
+         get => _textureRows;
          private set
          {
             if (value < 0)
                value = 0;
 
-            textureRows = value;
+            _textureRows = value;
          }
       }
 

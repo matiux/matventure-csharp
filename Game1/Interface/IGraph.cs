@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Interface {
+namespace Game1.Interface {
 
    public interface IGraph{ 
    

@@ -1,31 +1,31 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using Game1.Interface;
+using Game1.Map;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using Map;
-using Interface;
-using System;
 
-namespace TextureAtlas
+namespace Game1
 {
    public class Game1 : Microsoft.Xna.Framework.Game
    {
-      private const int windowWidth = 1360;
-      private const int windowHeight = 768;
+      private const int WindowWidth = 1360;
+      private const int WindowHeight = 768;
 
-      GraphicsDeviceManager graphics;
-      SpriteBatch spriteBatch;
+      GraphicsDeviceManager _graphics;
+      SpriteBatch _spriteBatch;
 
-      private World w;
+      private World _w;
 
-      private List<IGraph> Scena;
+      private List<IGraph> _scena;
 
       public Game1()
       {
-         graphics = new GraphicsDeviceManager(this)
+         _graphics = new GraphicsDeviceManager(this)
          {
-            PreferredBackBufferWidth = windowWidth,
-            PreferredBackBufferHeight = windowHeight,
+            PreferredBackBufferWidth = WindowWidth,
+            PreferredBackBufferHeight = WindowHeight,
             //IsFullScreen = fullscreen
          };
 
@@ -40,13 +40,12 @@ namespace TextureAtlas
 
       protected override void LoadContent()
       {
-         spriteBatch = new SpriteBatch(GraphicsDevice);
+         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
          Texture2D groundTexture = Content.Load<Texture2D>("ground");
 
-         //tileSprite = new TileSprite(groundTexture, 9, 9);
-         Scena = new List<IGraph>();
-         w = new World(groundTexture, 9, 9, new int[]{
+         _scena = new List<IGraph>();
+         _w = new World(groundTexture, 9, 9, new int[]{
                41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,
                41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,
                41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,
@@ -88,9 +87,9 @@ namespace TextureAtlas
                41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,
                41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,
                41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41
-         }, 41, 41, windowWidth, windowHeight, 29, 15);
+         }, 41, 41, WindowWidth, WindowHeight, 29, 15);
 
-         Scena.Add(w);
+         _scena.Add(_w);
       }
 
       protected override void UnloadContent()
@@ -105,11 +104,9 @@ namespace TextureAtlas
 
          UpdateKeyboard();
 
-         foreach (IGraph igr in Scena)
+         foreach (IGraph igr in _scena)
          {
-            if (igr == null) continue;
-
-            igr.Update();
+            igr?.Update();
          }
 
          base.Update(gameTime);
@@ -119,16 +116,14 @@ namespace TextureAtlas
       {
          GraphicsDevice.Clear(Color.Black);
 
-         spriteBatch.Begin();
+         _spriteBatch.Begin();
 
-         foreach (IGraph igr in Scena)
+         foreach (IGraph igr in _scena)
          {
-            if (igr == null) continue;
-
-            igr.Draw(spriteBatch);
+            igr?.Draw(_spriteBatch);
 
          }
-         spriteBatch.End();
+         _spriteBatch.End();
 
 
          base.Draw(gameTime);

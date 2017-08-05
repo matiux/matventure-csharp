@@ -1,8 +1,8 @@
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace Map
+namespace Game1.Map
 {
    public sealed class World : Map
    {
@@ -15,11 +15,6 @@ namespace Map
          int mapStartX, int mapStartY
       ) : base(texture, textureRows, textureColumns, mapGrid, screenWidth, screenHeight, mapStartX, mapStartY, mapWidth, mapHeight)
       {
-
-
-         // this.screenWidth = screenWidth;
-         // this.screenHeight = screenHeight;
-
 
       }
 
