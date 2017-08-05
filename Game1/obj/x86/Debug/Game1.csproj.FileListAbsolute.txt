@@ -8,3 +8,4 @@
 /home/iux/Documents/Programming/Csharp/Matventure/Game1/obj/x86/Debug/Game1.exe
 /home/iux/Documents/Programming/Csharp/Matventure/Game1/obj/x86/Debug/Game1.pdb
 /home/iux/Documents/Programming/Csharp/Matventure/Game1/bin/Windows/x86/Debug/Content/ground.xnb
+/home/iux/Documents/Programming/Csharp/Matventure/Game1/bin/Windows/x86/Debug/Content/maps/world.csv

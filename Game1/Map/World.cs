@@ -9,13 +9,11 @@ namespace Game1.Map
       public World(
          Texture2D texture,
          int textureRows, int textureColumns,
-         int[] mapGrid,
-         int mapWidth, int mapHeight,
+         string mapPath,
          int screenWidth, int screenHeight,
          int mapStartX, int mapStartY
-      ) : base(texture, textureRows, textureColumns, mapGrid, screenWidth, screenHeight, mapStartX, mapStartY, mapWidth, mapHeight)
+      ) : base(texture, textureRows, textureColumns, mapPath, screenWidth, screenHeight, mapStartX, mapStartY)
       {
-
       }
 
       // public World(Texture2D texture) : base(texture, 1, 1)
@@ -33,9 +31,19 @@ namespace Game1.Map
             {
                if ((MapStartX+incrementoX) < 0 || (MapStartX+incrementoX) > MapWidth) { continue; }
 
-               int tileInTexture = MapGrid[MapWidth * (MapStartY+incrementoY) + (MapStartY+incrementoX)] - 1; //x = 1, y = 0 -> indice 1 (texture 1)
+               string tileInTextureString = MapGrid[MapWidth * (MapStartY + incrementoY) + (MapStartY + incrementoX)];// - 1;
+               
+               int tileInTexture;
 
-               Console.WriteLine(tileInTexture);
+               if (!Int32.TryParse(tileInTextureString, out tileInTexture))
+               {
+                  throw new System.ArgumentException("Int32.TryParse could not parse '{0}' to an int.\n",
+                     tileInTextureString);
+               }
+               else
+               {
+                  tileInTexture--;
+               }
 
                int textureTileRow = (int)((float)tileInTexture / (float)TextureColumns);
                int textureTileColumn = tileInTexture % TextureColumns;
