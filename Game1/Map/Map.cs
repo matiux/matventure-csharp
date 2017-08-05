@@ -128,7 +128,7 @@ namespace Game1.Map
                var line = reader.ReadLine();
                var tileCodeLine = line?.Trim().Split(',');
 
-               if (String.IsNullOrEmpty(tileCodeLine[tileCodeLine.Length - 1]))
+               if (String.IsNullOrEmpty(tileCodeLine?[tileCodeLine.Length - 1]))
                {
                   tileCodeLine = tileCodeLine.Reverse().Skip(1).Reverse().ToArray();
                }

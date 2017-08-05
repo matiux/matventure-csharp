@@ -16,6 +16,7 @@ namespace Game1
       private SpriteBatch _spriteBatch;
       private World _w;
       private List<IGraph> _scena;
+      private int _mapStartX, _mapStartY;
       
       public Game1()
       {
@@ -32,6 +33,9 @@ namespace Game1
       protected override void Initialize()
       {
          Console.WriteLine("Initialize");
+
+         _mapStartX = 29;
+         _mapStartY = 15;
          
          _spriteBatch = new SpriteBatch(GraphicsDevice);
          _scena = new List<IGraph>();
@@ -45,7 +49,7 @@ namespace Game1
          
          Texture2D groundTexture = Content.Load<Texture2D>("ground");
          
-         _w = new World(groundTexture, 9, 9, "Content/maps/world.csv", screenWidth: WindowWidth, screenHeight: WindowHeight, mapStartX: 29, mapStartY: 15);
+         _w = new World(groundTexture, 9, 9, "Content/maps/world.csv", screenWidth: WindowWidth, screenHeight: WindowHeight, mapStartX: _mapStartX, mapStartY: _mapStartY);
          _scena.Add(_w);
       }
 
@@ -56,7 +60,7 @@ namespace Game1
 
       protected override void Update(GameTime gameTime)
       {
-         Console.WriteLine("Aggiorno il gioco");
+         //Console.WriteLine("Aggiorno il gioco");
          
          // Allows the game to exit
          if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -74,7 +78,7 @@ namespace Game1
 
       protected override void Draw(GameTime gameTime)
       {
-         Console.WriteLine("Disegno il gioco");
+         //Console.WriteLine("Disegno il gioco");
          
          GraphicsDevice.Clear(Color.Black);
 
@@ -100,7 +104,7 @@ namespace Game1
 
          if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
          {
-            // Tasto UP premuto    
+            Console.WriteLine("Tasto W premuto");
          }
       }
 
