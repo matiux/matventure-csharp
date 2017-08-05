@@ -97,6 +97,19 @@ namespace Game1.Map
 
       public abstract void Draw(SpriteBatch spriteBatch);
 
+      protected int GetTileCode(int incrementoX, int incrementoY)
+      {
+         int tileInTexture;
+         
+         string tileInTextureString = MapGrid[MapWidth * (MapStartY + incrementoY) + (MapStartY + incrementoX)];
+
+         if (Int32.TryParse(tileInTextureString, out tileInTexture))
+            return --tileInTexture;
+         
+         throw new System.ArgumentException("Int32.TryParse could not parse '{0}' to an int.\n",
+            tileInTextureString);
+      }
+      
       protected virtual void LoadMap()
       {
          Console.WriteLine("Carico la mappa");
@@ -127,18 +140,15 @@ namespace Game1.Map
             }
 
             if (columns != rows)
-            {
-               // Come lancio un'eccezione?
-            }
+               throw new System.ArgumentException("La mappa deve essere quadrata", $"Columns: {columns} - Rows: {rows}");
+            
             
             MapHeight = rows;
             MapWidth = columns;
             
          }
          else
-         {
-            // Come lancio un'eccezione?
-         }
+            throw new System.ArgumentException("Il file non esiste", MapPath);
       }
    }
 }

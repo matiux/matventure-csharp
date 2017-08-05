@@ -19,6 +19,8 @@ namespace Game1
       
       public Game1()
       {
+         Console.WriteLine("Instanzio Game1");
+         
          _graphics = new GraphicsDeviceManager(this) {
             PreferredBackBufferWidth = WindowWidth,
             PreferredBackBufferHeight = WindowHeight,
@@ -49,10 +51,13 @@ namespace Game1
 
       protected override void UnloadContent()
       {
+         Console.WriteLine("Unload content");
       }
 
       protected override void Update(GameTime gameTime)
       {
+         Console.WriteLine("Aggiorno il gioco");
+         
          // Allows the game to exit
          if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             this.Exit();
@@ -69,6 +74,8 @@ namespace Game1
 
       protected override void Draw(GameTime gameTime)
       {
+         Console.WriteLine("Disegno il gioco");
+         
          GraphicsDevice.Clear(Color.Black);
 
          _spriteBatch.Begin();

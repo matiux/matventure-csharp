@@ -20,7 +20,7 @@ namespace Game1.Map
       // {
 
       // }
-
+      
       public override void Draw(SpriteBatch spriteBatch)
       {
          for (int incrementoY = -EspansioneDalCentroY; incrementoY <= EspansioneDalCentroY; incrementoY++)
@@ -31,20 +31,7 @@ namespace Game1.Map
             {
                if ((MapStartX+incrementoX) < 0 || (MapStartX+incrementoX) > MapWidth) { continue; }
 
-               string tileInTextureString = MapGrid[MapWidth * (MapStartY + incrementoY) + (MapStartY + incrementoX)];// - 1;
-               
-               int tileInTexture;
-
-               if (!Int32.TryParse(tileInTextureString, out tileInTexture))
-               {
-                  throw new System.ArgumentException("Int32.TryParse could not parse '{0}' to an int.\n",
-                     tileInTextureString);
-               }
-               else
-               {
-                  tileInTexture--;
-               }
-
+               int tileInTexture = GetTileCode(incrementoX, incrementoY);
                int textureTileRow = (int)((float)tileInTexture / (float)TextureColumns);
                int textureTileColumn = tileInTexture % TextureColumns;
 
@@ -54,7 +41,7 @@ namespace Game1.Map
                int posX = ScreenMezzoWidth + (incrementoX * MezzoTileWidth) - (incrementoY * MezzoTileWidth);
                int posY = ScreenMezzoHeight + (incrementoY * MezzoTileHeight) + (incrementoX * MezzoTileHeight);
 
-               Console.WriteLine(incrementoX + ", " + incrementoY + " | " + posX + ", " + posY);
+               //Console.WriteLine(incrementoX + ", " + incrementoY + " | " + posX + ", " + posY);
 
                Rectangle destinationRectangle = new Rectangle(
                                  posX,
