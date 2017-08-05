@@ -110,6 +110,13 @@ namespace Game1.Map
             tileInTextureString);
       }
       
+      /**
+       * In questo metodo potrebbe essere comodo un refactoring:
+       * Invece di fare il cast delle stringhe orese dal csv in int, all'interno del metodo Draw si potrebbe aggiungere un ciclo qui
+       * e castare TUTTA la mappa subito invece delle maop necessarie a riempire lo schermo nel metodo Draw. Questo perchè il metodo draw 
+       * disegna 60 volte al secondo quindi per ogni frame fa il cast di X tile. Se invece si casta tutta la mappa qui, magari casta tante stringhe
+       * subito, ma lo fa solo una volta 
+       */
       protected virtual void LoadMap()
       {
          Console.WriteLine("Carico la mappa");
