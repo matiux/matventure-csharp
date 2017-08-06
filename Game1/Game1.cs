@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game1.Character;
 using Game1.Interface;
 using Game1.Map;
 using Microsoft.Xna.Framework;
@@ -15,8 +16,11 @@ namespace Game1
       private GraphicsDeviceManager _graphics;
       private SpriteBatch _spriteBatch;
       private World _w;
+      private PgCharacter _pg;
       private List<IGraph> _scena;
       private int _mapStartX, _mapStartY;
+      private int _startPgPosX = 300;
+      private int _startPgPosY = 400;
       
       public Game1()
       {
@@ -47,10 +51,14 @@ namespace Game1
       {
          Console.WriteLine("Load content");
          
+         Texture2D pgTexture = Content.Load<Texture2D>("sephiroth");
          Texture2D groundTexture = Content.Load<Texture2D>("ground");
          
          _w = new World(groundTexture, 9, 9, "Content/maps/world.csv", screenWidth: WindowWidth, screenHeight: WindowHeight, mapStartX: _mapStartX, mapStartY: _mapStartY);
+         _pg = new PgCharacter(pgTexture, 4,4, _startPgPosX, _startPgPosY);
+         
          _scena.Add(_w);
+         _scena.Add(_pg);
       }
 
       protected override void UnloadContent()

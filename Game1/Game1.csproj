@@ -64,6 +64,7 @@
     </Content>
     <Content Include="Content\SmileyWalk.png" />
     <Content Include="Icon.ico" />
+    <Content Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
