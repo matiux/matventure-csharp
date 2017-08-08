@@ -123,42 +123,68 @@ namespace Game1
          {
             if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
-               PgPosY--;
+               if (PgPosY - 1 >= 0)
+               {
+                  PgPosY--;
+               }
             }
             else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
-               PgPosX--;
+               if (PgPosX - 1 >= 0)
+               {
+                  PgPosX--;
+               }
             }
             else
             {
-               PgPosY--;
-               PgPosX--;
+               if (PgPosX - 1 >= 0 && PgPosY - 1 >= 0)
+               {
+                  PgPosY--;
+                  PgPosX--;
+               }
             }
          }
          else if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
          {
             if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
-               PgPosX++;
+               if (PgPosX + 1 <= 41)
+               {
+                  PgPosX++;
+               }
             }
             else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
-               PgPosY++;
+               if (PgPosY + 1 <= 41)
+               {
+                  PgPosY++;
+               }
             }
             else
             {
-               PgPosY++;
-               PgPosX++;
+               if (PgPosX + 1 <= 41 && PgPosY + 1 <= 41)
+               {
+                  PgPosY++;
+                  PgPosX++;
+               }
             }
          } else if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
          {
-            PgPosY--;
-            PgPosX++;
+            if (PgPosX + 1 <= 41 && PgPosY - 1 >= 0)
+            {
+               PgPosY--;
+               PgPosX++;
+            }
          }
          else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
          {
-            PgPosY++;
-            PgPosX--;
+            if (PgPosX - 1 >= 0 && PgPosY + 1 <= 41)
+            {
+               PgPosY++;
+               PgPosX--;               
+            }
+            
+
          }
          
 /*         se vai in alto{   
