@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>/home/iux/Documents/Programming/Csharp/Matventure/Game1/Content/sephiroth.png</SourceFile>
+  <SourceFile>/home/iux/Documents/Programming/Csharp/Matventure/Game1/Content/Characters/Sephiroth/sephiroth.png</SourceFile>
   <SourceTime>2013-07-20T16:49:36+02:00</SourceTime>
-  <DestFile>/home/iux/Documents/Programming/Csharp/Matventure/Game1/Content/bin/Windows/sephiroth.xnb</DestFile>
-  <DestTime>2017-08-06T22:40:20+02:00</DestTime>
+  <DestFile>/home/iux/Documents/Programming/Csharp/Matventure/Game1/Content/bin/Windows/Characters/Sephiroth/sephiroth.xnb</DestFile>
+  <DestTime>2017-08-08T11:53:34+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-07-30T20:08:17+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

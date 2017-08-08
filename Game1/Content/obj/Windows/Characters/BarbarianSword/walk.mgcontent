@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>/home/iux/Documents/Programming/Csharp/Matventure/Game1/Content/ground.png</SourceFile>
-  <SourceTime>2017-07-31T19:48:16+02:00</SourceTime>
-  <DestFile>/home/iux/Documents/Programming/Csharp/Matventure/Game1/Content/bin/Windows/ground.xnb</DestFile>
+  <SourceFile>/home/iux/Documents/Programming/Csharp/Matventure/Game1/Content/Characters/BarbarianSword/walk.png</SourceFile>
+  <SourceTime>2017-06-26T14:47:34+02:00</SourceTime>
+  <DestFile>/home/iux/Documents/Programming/Csharp/Matventure/Game1/Content/bin/Windows/Characters/BarbarianSword/walk.xnb</DestFile>
   <DestTime>2017-08-08T11:53:34+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-07-30T20:08:17+02:00</ImporterTime>

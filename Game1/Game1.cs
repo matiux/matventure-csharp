@@ -56,7 +56,7 @@ namespace Game1
          Console.WriteLine("Load content");
          
          Texture2D groundTexture = Content.Load<Texture2D>("ground");
-         Texture2D pgTexture = Content.Load<Texture2D>("sephiroth");
+         Texture2D pgTexture = Content.Load<Texture2D>("Characters/Sephiroth/sephiroth");
          
          _m = new World(groundTexture, 9, 9, "Content/maps/world.csv");
          _pg = new PgCharacter(pgTexture, 4, 4);
@@ -118,8 +118,71 @@ namespace Game1
             return;
 
          _future = DateTime.Now + TimeSpan.FromMilliseconds(100);
+
+         if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
+         {
+            if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+            {
+               PgPosY--;
+            }
+            else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
+            {
+               PgPosX--;
+            }
+            else
+            {
+               PgPosY--;
+               PgPosX--;
+            }
+         }
+         else if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
+         {
+            if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+            {
+               PgPosX++;
+            }
+            else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
+            {
+               PgPosY++;
+            }
+            else
+            {
+               PgPosY++;
+               PgPosX++;
+            }
+         } else if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+         {
+            PgPosY--;
+            PgPosX++;
+         }
+         else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
+         {
+            PgPosY++;
+            PgPosX--;
+         }
+         
+/*         se vai in alto{   
+            se vai a destra { // sta andando in alto a destra   }  
+            se vai a sinistra { // sta andando in alto a sinistra }   
+            altrimenti { // Sta andando solo in alto }
+         }
+         altrimenti se vai in basso
+                  {
+                     ..... vedi sopra
+                  }
+         altrimenti se vai a destra { sta andando SOLO a destra }
+         altrimenti se vai a sinistra { sta andando SOLO a sinistra  }
          
          if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
+         {
+            if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+            {
+               PgPosX++;
+               PgPosY--;
+            }
+         }
+         
+/*         if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
          {
             if (PgPosX - 1 > 0 && PgPosY - 1 >= 0)
             {
@@ -135,7 +198,8 @@ namespace Game1
                PgPosX++;
             }
          }
-         else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
+         
+         if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
          {
             if (PgPosX - 1 > 0 && PgPosY + 1 < 41)
             {
@@ -143,14 +207,15 @@ namespace Game1
                PgPosY++;
             }
          }
-         else if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+         
+         if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
          {
             if (PgPosX + 1 < 41 && PgPosY - 1 >= 0)
             {
                PgPosX++;
                PgPosY--;
             }
-         }
+         }*/
       }
 
       public void Uscita()
