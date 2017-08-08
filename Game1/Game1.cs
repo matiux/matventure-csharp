@@ -11,16 +11,17 @@ namespace Game1
 {
    public class Game1 : Microsoft.Xna.Framework.Game
    {
-      private const int WindowWidth = 1360;
-      private const int WindowHeight = 768;
+      public static int WindowWidth = 1360;
+      public static int WindowHeight = 768;
+      public static int TileWidth = 126;
+      public static int TileHeight = 64;
+      public static int PgPosX, PgPosY;
+      
       private GraphicsDeviceManager _graphics;
       private SpriteBatch _spriteBatch;
-      private World _w;
+      private World _m;
       private PgCharacter _pg;
       private List<IGraph> _scena;
-      private int _mapStartX, _mapStartY;
-      private int _startPgPosX = 300;
-      private int _startPgPosY = 400;
       
       public Game1()
       {
@@ -38,8 +39,8 @@ namespace Game1
       {
          Console.WriteLine("Initialize");
 
-         _mapStartX = 29;
-         _mapStartY = 15;
+         PgPosX = 15;
+         PgPosY = 16;
          
          _spriteBatch = new SpriteBatch(GraphicsDevice);
          _scena = new List<IGraph>();
@@ -51,13 +52,13 @@ namespace Game1
       {
          Console.WriteLine("Load content");
          
-         Texture2D pgTexture = Content.Load<Texture2D>("sephiroth");
          Texture2D groundTexture = Content.Load<Texture2D>("ground");
+         Texture2D pgTexture = Content.Load<Texture2D>("sephiroth");
          
-         _w = new World(groundTexture, 9, 9, "Content/maps/world.csv", screenWidth: WindowWidth, screenHeight: WindowHeight, mapStartX: _mapStartX, mapStartY: _mapStartY);
-         _pg = new PgCharacter(pgTexture, 4,4, _startPgPosX, _startPgPosY);
+         _m = new World(groundTexture, 9, 9, "Content/maps/world.csv");
+         _pg = new PgCharacter(pgTexture, 4, 4);
          
-         _scena.Add(_w);
+         _scena.Add(_m);
          _scena.Add(_pg);
       }
 
@@ -95,8 +96,8 @@ namespace Game1
          foreach (IGraph igr in _scena)
          {
             igr?.Draw(_spriteBatch);
-
          }
+         
          _spriteBatch.End();
 
 
@@ -112,7 +113,35 @@ namespace Game1
 
          if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
          {
-            Console.WriteLine("Tasto W premuto");
+            if (PgPosX - 1 > 0 && PgPosY - 1 >= 0)
+            {
+               PgPosY--;
+               PgPosX--;
+            }
+         }
+         else if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
+         {
+            if (PgPosX + 1 < 41 && PgPosY + 1 < 41)
+            {
+               PgPosY++;
+               PgPosX++;
+            }
+         }
+         else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
+         {
+            if (PgPosX - 1 > 0 && PgPosY + 1 < 41)
+            {
+               PgPosX--;
+               PgPosY++;
+            }
+         }
+         else if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+         {
+            if (PgPosX + 1 < 41 && PgPosY - 1 >= 0)
+            {
+               PgPosX++;
+               PgPosY--;
+            }
          }
       }
 
