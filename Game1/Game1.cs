@@ -15,6 +15,7 @@ namespace Game1
       public static int WindowHeight = 768;
       public static int TileWidth = 126;
       public static int TileHeight = 64;
+      
       public static int PgPosX, PgPosY;
       
       private GraphicsDeviceManager _graphics;
@@ -22,7 +23,8 @@ namespace Game1
       private World _m;
       private PgCharacter _pg;
       private List<IGraph> _scena;
-      
+      private DateTime _future;
+
       public Game1()
       {
          Console.WriteLine("Instanzio Game1");
@@ -42,6 +44,7 @@ namespace Game1
          PgPosX = 15;
          PgPosY = 16;
          
+         _future = DateTime.Now + TimeSpan.FromMilliseconds(200);
          _spriteBatch = new SpriteBatch(GraphicsDevice);
          _scena = new List<IGraph>();
          
@@ -111,6 +114,11 @@ namespace Game1
          if (keyboardState.IsKeyDown(Keys.Escape))
             Uscita();
 
+         if (DateTime.Now < _future)
+            return;
+
+         _future = DateTime.Now + TimeSpan.FromMilliseconds(100);
+         
          if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
          {
             if (PgPosX - 1 > 0 && PgPosY - 1 >= 0)

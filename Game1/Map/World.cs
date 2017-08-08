@@ -52,11 +52,7 @@ namespace Game1.Map
          }
       }
 
-      public World(
-         Texture2D texture,
-         int textureRows, int textureColumns,
-         string mapPath
-      )
+      public World(Texture2D texture,int textureRows, int textureColumns, string mapPath)
       {
          Texture = texture;
          TextureRows = textureRows;
@@ -130,7 +126,7 @@ namespace Game1.Map
       protected int GetTileCode(int incrementoX, int incrementoY)
       {
          int tileInTexture;
-         Console.WriteLine("{0}, {1} - Index: {2} | MapStartX: {3}, MapStartY: {4}", incrementoX, incrementoY, MapWidth * (MapStartY + incrementoY) + (MapStartX + incrementoX), MapStartX, MapStartY);
+         //Console.WriteLine("{0}, {1} - Index: {2} | MapStartX: {3}, MapStartY: {4}", incrementoX, incrementoY, MapWidth * (MapStartY + incrementoY) + (MapStartX + incrementoX), MapStartX, MapStartY);
          
          string tileInTextureString = MapGrid[MapWidth * (MapStartY + incrementoY) + (MapStartX + incrementoX)];
 
