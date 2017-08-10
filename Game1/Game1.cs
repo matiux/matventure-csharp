@@ -186,62 +186,7 @@ namespace Game1
             
 
          }
-         
-/*         se vai in alto{   
-            se vai a destra { // sta andando in alto a destra   }  
-            se vai a sinistra { // sta andando in alto a sinistra }   
-            altrimenti { // Sta andando solo in alto }
-         }
-         altrimenti se vai in basso
-                  {
-                     ..... vedi sopra
-                  }
-         altrimenti se vai a destra { sta andando SOLO a destra }
-         altrimenti se vai a sinistra { sta andando SOLO a sinistra  }
-         
-         if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
-         {
-            if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
-            {
-               PgPosX++;
-               PgPosY--;
-            }
-         }
-         
-/*         if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
-         {
-            if (PgPosX - 1 > 0 && PgPosY - 1 >= 0)
-            {
-               PgPosY--;
-               PgPosX--;
-            }
-         }
-         else if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
-         {
-            if (PgPosX + 1 < 41 && PgPosY + 1 < 41)
-            {
-               PgPosY++;
-               PgPosX++;
-            }
-         }
-         
-         if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
-         {
-            if (PgPosX - 1 > 0 && PgPosY + 1 < 41)
-            {
-               PgPosX--;
-               PgPosY++;
-            }
-         }
-         
-         if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
-         {
-            if (PgPosX + 1 < 41 && PgPosY - 1 >= 0)
-            {
-               PgPosX++;
-               PgPosY--;
-            }
-         }*/
+        
       }
 
       public void Uscita()
