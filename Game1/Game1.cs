@@ -21,7 +21,7 @@ namespace Game1
       private GraphicsDeviceManager _graphics;
       private SpriteBatch _spriteBatch;
       private World _m;
-      private PgCharacter _pg;
+      private Character.Character _pg;
       private List<IGraph> _scena;
       private DateTime _future;
 
@@ -57,9 +57,11 @@ namespace Game1
          
          Texture2D groundTexture = Content.Load<Texture2D>("ground");
          Texture2D pgTexture = Content.Load<Texture2D>("Characters/Sephiroth/sephiroth");
+         Texture2D barbariabnTexture = Content.Load<Texture2D>("Characters/BarbarianSword/walk");
          
          _m = new World(groundTexture, 9, 9, "Content/maps/world.csv");
-         _pg = new PgCharacter(pgTexture, 4, 4);
+         //_pg = new PgCharacter(pgTexture, 4, 4);
+         _pg = new BarbarianCharacter(barbariabnTexture, 8, 10);
          
          _scena.Add(_m);
          _scena.Add(_pg);

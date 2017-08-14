@@ -5,93 +5,52 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Character
 {
-    public class PgCharacter : IGraph
+    public class PgCharacter : Character
     {
-        private Texture2D Texture { get; }
-        private int TextureRows { get; }
-        private int TextureColumns { get; }
-        private int _currentFrame;
-        private DateTime _future;
-        private int _currentPosX, _currentPosY;
-        
-        enum Directions : int {Down = 0, Left = 1, Right = 2, Up = 3};
+        private enum Directions : int {Down = 0, Left = 1, Right = 2, Up = 3};
 
-        private int _direction;
-
-        public PgCharacter(Texture2D texture, int textureRows, int textureColumns)
+        public PgCharacter(Texture2D texture, int textureRows, int textureColumns) : base(texture, textureRows, textureColumns)
         {
-            Texture = texture;
-            TextureRows = textureRows;
-            TextureColumns = textureColumns;
-            _currentFrame = 0;
-            _currentPosX = Game1.PgPosX;
-            _currentPosY = Game1.PgPosY;
-            _direction =  (int)Directions.Down;
-            
-            _future = DateTime.Now + TimeSpan.FromMilliseconds(200);
+            Direction =  (int)Directions.Down;
+            CurrentFrame = 0;
         }
 
-        public void Update()
+        public override void Update()
         {
-            Console.WriteLine("Direction: {0}", _direction);
+            //Console.WriteLine("Direction: {0}", Direction);
 
-            if (Game1.PgPosX < _currentPosX && Game1.PgPosY < _currentPosY)
+            if (Game1.PgPosX < CurrentPosX && Game1.PgPosY < CurrentPosY)
             {
-                _direction = (int) Directions.Up;
-                _currentPosX = Game1.PgPosX;
-                _currentPosY = Game1.PgPosY;
+                Direction = (int) Directions.Up;
+                CurrentPosX = Game1.PgPosX;
+                CurrentPosY = Game1.PgPosY;
                 
                 ChangeFrame();
             }
-            else if(Game1.PgPosX > _currentPosX && Game1.PgPosY > _currentPosY)
+            else if(Game1.PgPosX > CurrentPosX && Game1.PgPosY > CurrentPosY)
             {
-                _direction = (int) Directions.Down;
-                _currentPosX = Game1.PgPosX;
-                _currentPosY = Game1.PgPosY;
+                Direction = (int) Directions.Down;
+                CurrentPosX = Game1.PgPosX;
+                CurrentPosY = Game1.PgPosY;
                 
                 ChangeFrame();
             }
-            else if(Game1.PgPosX > _currentPosX && Game1.PgPosY < _currentPosY)
+            else if(Game1.PgPosX > CurrentPosX && Game1.PgPosY < CurrentPosY)
             {
-                _direction = (int) Directions.Right;
-                _currentPosX = Game1.PgPosX;
-                _currentPosY = Game1.PgPosY;
+                Direction = (int) Directions.Right;
+                CurrentPosX = Game1.PgPosX;
+                CurrentPosY = Game1.PgPosY;
                 
                 ChangeFrame();
             }
-            else if(Game1.PgPosX < _currentPosX && Game1.PgPosY > _currentPosY)
+            else if(Game1.PgPosX < CurrentPosX && Game1.PgPosY > CurrentPosY)
             {
-                _direction = (int) Directions.Left;
-                _currentPosX = Game1.PgPosX;
-                _currentPosY = Game1.PgPosY;
+                Direction = (int) Directions.Left;
+                CurrentPosX = Game1.PgPosX;
+                CurrentPosY = Game1.PgPosY;
                 
                 ChangeFrame();
             }
-        }
-
-        private void ChangeFrame()
-        {
-            if (DateTime.Now >= _future)
-            {
-                _future = DateTime.Now + TimeSpan.FromMilliseconds(200);
-                _currentFrame++;
-                
-                if (_currentFrame == 4)
-                {
-                    _currentFrame = 0;
-                }
-            }
-        }
-        
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            int singleFrameWidth = Texture.Width / TextureColumns;
-            int singleFrameHeight = Texture.Height / TextureRows;
-            
-            Rectangle sourceRectangle = new Rectangle(singleFrameWidth * _currentFrame, singleFrameHeight * _direction, singleFrameWidth, singleFrameHeight);
-            Rectangle destinationRectangle = new Rectangle(Game1.WindowWidth / 2 - singleFrameWidth/2, Game1.WindowHeight /2-singleFrameHeight , singleFrameWidth, singleFrameHeight);
-            
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
     }
 }
