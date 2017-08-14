@@ -148,21 +148,21 @@ namespace Game1
          {
             if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
-               if (PgPosX + 1 <= 41)
+               if (PgPosX + 1 < 41)
                {
                   PgPosX++;
                }
             }
             else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
-               if (PgPosY + 1 <= 41)
+               if (PgPosY + 1 < 41)
                {
                   PgPosY++;
                }
             }
             else
             {
-               if (PgPosX + 1 <= 41 && PgPosY + 1 <= 41)
+               if (PgPosX + 1 < 41 && PgPosY + 2 <= 41)
                {
                   PgPosY++;
                   PgPosX++;
@@ -170,7 +170,7 @@ namespace Game1
             }
          } else if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
          {
-            if (PgPosX + 1 <= 41 && PgPosY - 1 >= 0)
+            if (PgPosX + 1 < 41 && PgPosY - 1 >= 0)
             {
                PgPosY--;
                PgPosX++;
@@ -178,7 +178,7 @@ namespace Game1
          }
          else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
          {
-            if (PgPosX - 1 >= 0 && PgPosY + 1 <= 41)
+            if (PgPosX - 1 >= 0 && PgPosY + 1 < 41)
             {
                PgPosY++;
                PgPosX--;               
