@@ -119,7 +119,7 @@ namespace Game1
          if (DateTime.Now < _future)
             return;
 
-         _future = DateTime.Now + TimeSpan.FromMilliseconds(100);
+         _future = DateTime.Now + TimeSpan.FromMilliseconds(200);
 
          if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
          {
