@@ -3,6 +3,5 @@
 .directory
 Game1/.directory
 Game1/obj
-Game1/bin/*
-!Game1/bin/Windows/x86/Debug/x64/
+Game1/bin/Windows/x86/Debug/*
 
