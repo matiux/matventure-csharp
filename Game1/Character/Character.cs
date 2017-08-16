@@ -57,7 +57,7 @@ namespace Game1.Character
             int singleFrameHeight = Texture.Height / TextureRows;
             
             Rectangle sourceRectangle = new Rectangle(singleFrameWidth * CurrentFrame, singleFrameHeight * Direction, singleFrameWidth, singleFrameHeight);
-            Rectangle destinationRectangle = new Rectangle(Game1.WindowWidth / 2 - singleFrameWidth/2, Game1.WindowHeight /2-singleFrameHeight , singleFrameWidth, singleFrameHeight);
+            Rectangle destinationRectangle = new Rectangle(Game1.WindowWidth / 2 - singleFrameWidth/2, Game1.WindowHeight / 2 - singleFrameHeight + 14 , singleFrameWidth, singleFrameHeight);
             
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }

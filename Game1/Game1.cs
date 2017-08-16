@@ -126,16 +126,12 @@ namespace Game1
             if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
                if (PgPosY - 1 >= 0)
-               {
                   PgPosY--;
-               }
             }
             else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
                if (PgPosX - 1 >= 0)
-               {
                   PgPosX--;
-               }
             }
             else
             {
@@ -158,9 +154,7 @@ namespace Game1
             else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
                if (PgPosY + 1 < 41)
-               {
                   PgPosY++;
-               }
             }
             else
             {
@@ -185,10 +179,7 @@ namespace Game1
                PgPosY++;
                PgPosX--;               
             }
-            
-
          }
-        
       }
 
       public void Uscita()

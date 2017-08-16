@@ -4,8 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>/home/iux/Documenti/Programming/Csharp/matventure/Game1/Content/ground.png</File>
-    <File>/home/iux/Documenti/Programming/Csharp/matventure/Game1/Content/Characters/Sephiroth/sephiroth.png</File>
-    <File>/home/iux/Documenti/Programming/Csharp/matventure/Game1/Content/Characters/BarbarianSword/walk.png</File>
+    <File>/home/matiux/Documents/Programming/Csharp/matventure/Game1/Content/ground.png</File>
+    <File>/home/matiux/Documents/Programming/Csharp/matventure/Game1/Content/Characters/Sephiroth/sephiroth.png</File>
+    <File>/home/matiux/Documents/Programming/Csharp/matventure/Game1/Content/Characters/BarbarianSword/walk.png</File>
   </SourceFiles>
 </SourceFileCollection>
